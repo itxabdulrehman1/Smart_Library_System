@@ -18,4 +18,4 @@ A MERN Stack Single Page Application (SPA) for managing a library book collectio
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/itxabdulrehman1/Smart_Library_System.git
