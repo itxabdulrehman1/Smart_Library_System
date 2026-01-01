@@ -1,0 +1,195 @@
+/* client/src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* THEME: Black & Red */
+  --primary-color: #ff0f0f;      /* Bright Red */
+  --secondary-color: #8a0000;    /* Dark Red */
+  --accent-color: #ff4b4b;       /* Lighter Red for accents */
+  --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); /* Deep dark gradient base */
+  /* User requested Black and Red gradient specifically for body */
+  --main-bg: linear-gradient(135deg, #000000 0%, #4a0000 100%);
+  
+  --text-main: #ffffff;          /* White text for dark mode */
+  --text-muted: #cccccc;         /* Grey text */
+  --card-bg: rgba(20, 20, 20, 0.95); /* Dark card background */
+  --input-bg: #333333;           /* Dark input background */
+  --input-text: #ffffff;         /* White input text (FIXES BLANK ISSUE) */
+  
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--main-bg); /* Black to Red Gradient */
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: var(--text-main);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --- HEADER --- */
+h1 {
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--primary-color);
+  margin: 10px auto 0;
+  box-shadow: 0 0 10px var(--primary-color); /* Glowing effect */
+}
+
+/* --- FORM STYLING --- */
+.book-form {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 3rem;
+  border: 1px solid #444;
+}
+
+/* FIX: Input text color explicitly set to white */
+.book-form input {
+  padding: 15px 20px;
+  border: 2px solid #444;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  
+  background-color: var(--input-bg); /* Dark Grey Background */
+  color: var(--input-text);          /* White Text - VISIBLE NOW */
+  
+  transition: all 0.3s ease;
+}
+
+.book-form input::placeholder {
+  color: #888;
+}
+
+.book-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(255, 15, 15, 0.3); /* Red Glow */
+}
+
+/* Add Button */
+.add-btn {
+  background: linear-gradient(to right, #d31027, #ea384d);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(211, 16, 39, 0.6); /* Red Shadow */
+}
+
+/* --- BOOK LIST --- */
+.book-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.book-card {
+  background: var(--card-bg); /* Dark Card */
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 6px solid var(--primary-color); /* Red Accent */
+  transition: all 0.4s ease;
+  color: white;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  background: #1a1a1a;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-left-color: #fff;
+}
+
+.book-info h3 {
+  margin-bottom: 8px;
+  color: #fff; /* White Title */
+  font-size: 1.3rem;
+}
+
+.book-info p {
+  color: var(--text-muted); /* Light Grey Text */
+  font-size: 0.95rem;
+}
+
+.book-info strong {
+  color: var(--primary-color); /* Red Labels */
+}
+
+/* --- DELETE BUTTON --- */
+.delete-btn {
+  background-color: transparent;
+  color: #ff4b4b;
+  border: 1px solid #ff4b4b;
+  padding: 8px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #ff4b4b;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 75, 75, 0.6); /* Red Glow */
+}
+
+.error-msg {
+  color: #ff6b6b;
+  text-align: center;
+  margin-bottom: 10px;
+  background: rgba(255,0,0,0.1);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+@media (min-width: 700px) {
+  .book-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .add-btn {
+    grid-column: span 2;
+  }
+}
